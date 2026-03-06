@@ -1,5 +1,4 @@
 
-
 :root {
     /* Paleta Verde Esmeralda */
     --primary-light: #36BFB1;
@@ -1255,7 +1254,7 @@ body {
     box-shadow: 0 10px 30px rgba(3, 140, 115, 0.2);
 }
 
-.friday-event { border-left: 3px solid #9b59b6; }
+.friday-event { border-left: 3px solid #59b6a2; }
 .saturday-main { 
     border-left: 3px solid #36BFB1; 
     background: rgba(54, 191, 177, 0.1);
@@ -1912,7 +1911,7 @@ body {
         }
 
         .cookie-link {
-            color: #667eea;
+            color: #011f18;
             text-decoration: none;
             font-weight: 600;
             border-bottom: 2px solid transparent;
@@ -1920,7 +1919,7 @@ body {
         }
 
         .cookie-link:hover {
-            border-bottom-color: #667eea;
+            border-bottom-color: #11746b;
         }
 
         /* Botones - TAMAÑO REDUCIDO */
@@ -1947,7 +1946,7 @@ body {
         }
 
         .cookie-btn-primary {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #01140c 0%, #47aa81 100%);
             color: white;
         }
 
@@ -1958,8 +1957,8 @@ body {
 
         .cookie-btn-outline {
             background: transparent;
-            color: #667eea;
-            border: 1.5px solid #667eea;
+            color: #2af377;
+            border: 1.5px solid #00a171;
         }
 
         /* Panel de preferencias avanzadas */
@@ -2047,7 +2046,7 @@ body {
         }
 
         .toggle-switch.active {
-            background: #667eea;
+            background: #66eab7;
         }
 
         .toggle-switch::after {
@@ -2172,3 +2171,5 @@ body {
            pointer-events: none;
         }
         
+        
+
