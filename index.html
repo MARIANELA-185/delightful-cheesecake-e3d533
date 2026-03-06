@@ -1,0 +1,514 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elisa & María - 40 Años de Vida y Amistad</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Montserrat:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.0/font/bootstrap-icons.css">
+</head>
+<body>
+     <!-- ============================================
+         BANNER DE COOKIES
+         ============================================ -->
+    
+    <!-- Overlay de fondo -->
+    <div class="cookie-overlay" id="cookieOverlay"></div>
+
+    <!-- Banner principal -->
+    <div class="cookie-banner" id="cookieBanner">
+        <div class="cookie-container">
+            <div class="cookie-content">
+                <h3 class="cookie-title">
+                    <span class="cookie-icon">🍪</span>
+                    Respetamos tu privacidad
+                </h3>
+                <p class="cookie-text">
+                    Utilizamos cookies para mejorar tu experiencia, personalizar contenido y analizar nuestro tráfico. 
+                    Al hacer clic en "Aceptar todo", aceptas nuestra 
+                    <a href="#" class="cookie-link">Política de Cookies</a>.
+                </p>
+            </div>
+            <div class="cookie-buttons">
+                <button class="cookie-btn cookie-btn-outline" onclick="showPreferences()">
+                    Preferencias
+                </button>
+                <button class="cookie-btn cookie-btn-secondary" onclick="rejectAll()">
+                    Rechazar todo
+                </button>
+                <button class="cookie-btn cookie-btn-primary" onclick="acceptAll()">
+                    Aceptar todo
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Panel de Preferencias Avanzadas -->
+    <div class="cookie-preferences" id="preferencesPanel">
+        <div class="preferences-header">
+            <h2 class="preferences-title">Preferencias de Cookies</h2>
+            <button class="close-btn" onclick="closePreferences()">&times;</button>
+        </div>
+        
+        <div class="cookie-category">
+            <div class="category-header">
+                <span class="category-title">Cookies Necesarias</span>
+                <div class="toggle-switch active disabled" id="necessaryToggle"></div>
+            </div>
+            <p class="category-description">
+                Esenciales para el funcionamiento del sitio. No pueden desactivarse.
+            </p>
+        </div>
+
+        <div class="cookie-category">
+            <div class="category-header">
+                <span class="category-title">Cookies de Análisis</span>
+                <div class="toggle-switch" id="analyticsToggle" onclick="toggleCategory(this)"></div>
+            </div>
+            <p class="category-description">
+                Nos ayudan a entender cómo interactúas con el sitio y detectar errores.
+            </p>
+        </div>
+
+        <div class="cookie-category">
+            <div class="category-header">
+                <span class="category-title">Cookies de Marketing</span>
+                <div class="toggle-switch" id="marketingToggle" onclick="toggleCategory(this)"></div>
+            </div>
+            <p class="category-description">
+                Utilizadas para mostrarte anuncios relevantes y medir campañas.
+            </p>
+        </div>
+
+        <div class="preferences-footer">
+            <button class="cookie-btn cookie-btn-secondary" onclick="closePreferences()">Cancelar</button>
+            <button class="cookie-btn cookie-btn-primary" onclick="savePreferences()">Guardar preferencias</button>
+        </div>
+    </div>
+
+    <!-- Confirmación de guardado -->
+    <div class="save-confirmation" id="saveConfirmation">
+        ✅ Preferencias guardadas correctamente
+    </div>
+    <!-- ==========================================
+         HERO SECTION CON FONDO
+         ========================================== -->
+    <header class="hero-section" id="inicio">
+        <div class="hero-background">
+            <img src="img/9.png" alt="Fondo" id="bg-image">
+            <div class="hero-overlay"></div>
+        </div>
+        
+        <canvas id="particles-canvas"></canvas>
+        
+        <div class="container hero-content">
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <div class="hero-number" id="age-counter">0</div>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-12">
+                    <h1 class="hero-title">¡Celebrando Juntas!</h1>
+                </div>
+            </div>
+            
+            <div class="row justify-content-center">
+                <div class="col-12 col-md-8 col-lg-6">
+                    <p class="hero-subtitle">40 AÑOS DE VIDA y AMISTAD</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- ==========================================
+             <!-- ==========================================
+         REPRODUCTOR DE MÚSICA
+         ========================================== -->
+    <div class="music-player">
+        <div class="music-tooltip" id="music-tooltip">
+            <span class="song-title">🎵 Nuestra     Canción</span>
+            <small>Click para reproducir</small>
+        </div>
+        <button class="music-btn" id="music-btn" onclick="toggleMusic()">
+            <i class="bi bi-play-fill" id="music-icon"></i>
+            <div class="sound-waves"></div>
+            <div class="sound-waves"></div>
+            <div class="visualizer">
+                <div class="bar"></div>
+                <div class="bar"></div>
+                <div class="bar"></div>
+            </div>
+            <div class="music-progress">
+                <div class="music-progress-bar" id="progress-bar"></div>
+            </div>
+        </button>
+    </div>
+
+    <audio id="audio-player" loop>
+        <source src="audio/WhatsApp Audio 2026-03-01 at 00.47.07.mp3" type="audio/mpeg">
+        Tu navegador no soporta el elemento de audio.
+    </audio>
+    </header>
+
+    <!-- Partículas de fondo -->
+    <div id="particles"></div>
+    
+    <!-- Sección Principal con Cuenta Atrás -->
+    <section class="hero">
+        <div class="hero-content-main">
+            <div class="flames-effect"></div>
+            <h1 class="title-glow">Elisa & María</h1>
+            <div class="subtitle-container">
+                <span class="number-40">40</span>
+                <span class="años">Años</span>
+                <span class="heart-icon">❤️</span>
+                <div class="subtitle-text">
+                    <p class="celebration-text">Celebramos juntas</p>
+                    <p class="years-text">años de vida y amistad</p>
+                </div>
+            </div>
+            
+            <!-- Cuenta Atrás -->
+            <div class="countdown-container">
+                <h3 class="countdown-title">Faltan para la gran celebración</h3>
+                <div class="countdown">
+                    <div class="time-box">
+                        <span id="days">00</span>
+                        <label>Días</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="hours">00</span>
+                        <label>Horas</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="minutes">00</span>
+                        <label>Minutos</label>
+                    </div>
+                    <div class="time-box">
+                        <span id="seconds">00</span>
+                        <label>Segundos</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="main-date">
+                <div class="date-card">
+                    <span class="date-icon">📅</span>
+                    <p class="date-text">14 de Marzo - 12:00 hs</p>
+                    <p class="location-highlight">🎆 Fallas en Valencia 🎆</p>
+                </div>
+            </div>
+
+            <!-- Videos Section -->
+            <!-- PRIMER VIDEO -->
+    <div class="video-container" id="container-1">
+        <img 
+            src="img/tfalsas.jpg" 
+            alt="Fondo 1" 
+            class="imagen-fondo"
+        >
+
+        <video 
+            class="video-superior" 
+            id="video-1"
+            playsinline
+            preload="metadata"
+        >
+            <source src="video/video tfalsas.mp4" type="video/mp4">
+        </video>
+
+        <div class="play-overlay" id="overlay-1">
+            <button class="play-boton">▶</button>
+        </div>
+
+        <div class="controles" id="controles-1">
+            <button class="btn-control btn-play">▶</button>
+            <button class="btn-control btn-pausa">⏸</button>
+            <button class="btn-control btn-stop">⏹</button>
+        </div>
+
+        <div class="barra-progreso">
+            <div class="progreso"></div>
+        </div>
+    </div>
+
+    <!-- SEGUNDO VIDEO -->
+    <div class="video-container" id="container-2">
+        <img 
+            src="img/lo conseguimos.jpg"
+           
+            class="imagen-fondo"
+            
+        >
+
+        <video 
+            class="video-superior" 
+            id="video-2"
+            playsinline
+            preload="metadata"
+        >
+            <source src="video/videoinvitacion.mp4" type="video/mp4">
+        </video>
+
+        <div class="play-overlay" id="overlay-2">
+            <button class="play-boton">▶</button>
+        </div>
+
+        <div class="controles" id="controles-2">
+            <button class="btn-control btn-play">▶</button>
+            <button class="btn-control btn-pausa">⏸</button>
+            <button class="btn-control btn-stop">⏹</button>
+        </div>
+
+        <div class="barra-progreso">
+            <div class="progreso"></div>
+        </div>
+    </div>
+
+    <!-- Galería Slider -->
+    <section id="gallery">
+        <div class="gallery-header">
+          
+            <h2 class="section-title">Nuestros Momentos</h2>
+            <div class="title-line"></div>
+        </div>
+        
+        <div class="gallery-container">
+            <figure class="gallery-item">
+                <img src="img/1.png" alt="Imagen 1">
+                <figcaption>Compartir es vivir</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/2.png" alt="Imagen 2">
+                <figcaption>Gracias por estar siempre </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/3.png" alt="Imagen 3">
+                <figcaption>la vida es un viaje</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/4.png" alt="Imagen 4">
+                <figcaption>Que siempre tengamos motivos para celebrar</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/5.png" alt="Imagen 5">
+                <figcaption>la vida es una aventura</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/6.png" alt="Imagen 6">
+                <figcaption>Compartir es vivir</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/7.png" alt="Imagen 7">
+                <figcaption>La amistad aumenta la felicidad </figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/8.png" alt="Imagen 8">
+                <figcaption>Que Recuerdos</figcaption>
+            </figure>
+             <figure class="gallery-item">
+                <img src="img/18.png" alt="Imagen 18">
+                <figcaption>Hay amigos, hay familia y luego hay amigos que se convierten en familia</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/9.png" alt="Imagen 9">
+                <figcaption>En los cuentos te rescata un principe, en la vida real "una amiga".</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/10.png" alt="Imagen 10">
+                <figcaption>"La amistad no se agradece, se corresponde"</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/11.png" alt="Imagen 11">
+                <figcaption>"Quien tiene una amiga tiene ataques de risa"</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/12.png" alt="Imagen 12">
+                <figcaption>"El mejor ingrediente de la vida, es una pizca de  amistad"</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/13.png" alt="Imagen 13">
+                <figcaption>compartir es vivir</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/14.png" alt="Imagen 14">
+                <figcaption>"Descubrí cuál es el secreto de la vida: los amigos. Los mejores amigos".</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/15.png" alt="Imagen 15">
+                <figcaption>Recuerdos</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/16.png" alt="Imagen 16">
+                <figcaption>La alegría compartida con un amigo es una alegría doble</figcaption>
+            </figure>
+            <figure class="gallery-item">
+                <img src="img/17.png" alt="Imagen 17">
+                <figcaption>"La amistad es un tesoro que adquiere valor con el tiempo"</figcaption>
+            </figure>
+           
+        </div>
+
+        <!-- Controles del Slider -->
+        <div class="gallery-controls">
+            <button class="gallery-nav prev" aria-label="Anterior">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="15 18 9 12 15 6"></polyline>
+                </svg>
+            </button>
+            
+            <div class="gallery-dots"></div>
+            
+            <button class="gallery-nav next" aria-label="Siguiente">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="9 18 15 12 9 6"></polyline>
+                </svg>
+            </button>
+        </div>
+        
+        <div class="gallery-progress">
+            <div class="progress-fill"></div>
+        </div>
+    </section>
+
+    <!-- Itinerario -->
+    <section class="itinerary-section">
+        <h2 class="section-title">Itinerario de Celebración</h2>
+        <div class="timeline">
+            <!-- Viernes -->
+            <div class="timeline-item" data-day="viernes">
+                <div class="timeline-marker">
+                    <span class="day-number">13</span>
+                    <span class="day-name">VIE</span>
+                </div>
+                <div class="timeline-content">
+                    <div class="event-card friday-event">
+                        <div class="event-header">
+                            <h2>🎉 Cena por Ruzafa</h2>
+                            <h3>🎤 Karaoke Night</h3>
+                            <span class="time-badge">Apartir de las 23:00 hs</span>
+                        </div>
+                        <p class="event-description">Arrancamos la celebración con música y diversión</p>
+                        <a href="https://www.google.com/search?sca_esv=826eee960a139ad8&hl=es&gl=es&output=search&kgmid=/g/11b75lc9pj&q=Karaoke+La+la+-+ruzafa&shem=dlvsc,shrtsdl&shndl=30&source=sh/x/loc/uni/m1/3&kgs=ede38f6ff40f1fb8&utm_source=dlvsc,shrtsdl,sh/x/loc/uni/m1/3&sei=v0KraYX5C-e-i-gPwM_RiAk" target="_blank" class="location-btn">
+                            <span class="pin-icon">📍</span>
+                            Ver ubicación en Maps
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Sábado -->
+            <div class="timeline-item featured" data-day="sabado">
+                <div class="timeline-marker">
+                    <span class="day-number">14</span>
+                    <span class="day-name">SÁB</span>
+                </div>
+                <div class="timeline-content">
+                    <div class="event-card saturday-main">
+                        <div class="event-badge">Día Principal</div>
+                        <div class="event-header">
+                            <h3>🍷 Bodega Domingo</h3>
+                            <span class="time-badge">12:00 hs</span>
+                        </div>
+                        <a href="https://share.google/5doRO4GR3BjpYEQI5" target="_blank" class="location-btn main-location">
+                            <span class="pin-icon">📍</span>
+                            Ubicación Bodega
+                        </a>
+                    </div>
+                    
+                    <div class="event-card saturday-tardeo">
+                        <div class="event-header">
+                            <h3>🌅 Tardeo</h3>
+                            <span class="time-badge">17.30 hs</span>
+                        </div>
+                        <a href="https://palaualameda.com/events/afteryou-en-la-sala-14-03/#events/afteryou-non-stop-1630---0330-14-03-2026-1D76/tickets/l2r3y3ogvkvqg3k90brzkx27t4xlpmm0" target="_blank" class="location-btn">
+                            <span class="pin-icon">📍</span>
+                            Ubicación Tardeo
+                        </a>
+                    </div>
+
+                    <div class="event-card saturday-fallas">
+                        <div class="event-header">
+                            <h3>🎆 Fallas de Valencia</h3>
+                            <span class="time-badge">Noche</span>
+                        </div>
+                        <p class="event-description">¡La magia de las Fallas!</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Domingo -->
+            <div class="timeline-item" data-day="domingo">
+                <div class="timeline-marker">
+                    <span class="day-number">15</span>
+                    <span class="day-name">DOM</span>
+                </div>
+                <div class="timeline-content">
+                    <div class="event-card sunday-event">
+                        <div class="event-header">
+                            <h3>🥘 Paella en Casa Baldo 1915</h3>
+                            <span class="time-badge">14:15 hs</span>
+                        </div>
+                        <p class="event-description">Despedida con la mejor paella valenciana</p>
+                        <a href="https://grupogastrotrinquet.com/restaurantes/casa-baldo/" target="_blank" class="location-btn">
+                            <span class="pin-icon">📍</span>
+                            Ver ubicación
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Hotel Section -->
+    <section class="hotel-section">
+        <div class="hotel-card">
+            <div class="hotel-image-container">
+                <div class="hotel-image"></div>
+                <div class="hotel-overlay">
+                    <img src="img/hotelvalencia.jpg" alt="">
+                    
+                </div>
+            </div>
+            <div class="hotel-info">
+                <h3>Alojamiento para Invitados</h3>
+                <p>Hotel recomendado para tu estancia en Valencia</p>
+                <a href="https://www.google.com/maps/place/Kora+Lluna/@39.4652315,-0.3347118,16z/data=!3m1!4b1!4m9!3m8!1s0xd60490025d86179:0x660567e9b947dd32!5m2!4m1!1i2!8m2!3d39.4652315!4d-0.3347118!16s%2Fg%2F11vzmc6cg8!18m1!1e1?entry=ttu&g_ep=EgoyMDI2MDIyNS4wIKXMDSoASAFQAw%3D%3D" target="_blank" class="hotel-btn">
+                    <span>Ver Hotel en Maps</span>
+                    <span class="arrow">→</span>
+                </a>
+            </div>
+        </div>
+    </section>
+       
+
+    <!-- Footer Animado -->
+    <footer class="animated-footer">
+        <div class="footer-content">
+            <div class="footer-text-container">
+                <h2 class="footer-main-text">¡Te esperamos!</h2>
+                <div class="footer-sub-text">
+                    <span class="typing-text">para celebrar todos juntos</span>
+                </div>
+                <p class="footer-message">
+                    Ven con muchas ganas de pasártelo bien 
+                    <span class="emoji-bounce">🎉</span>
+                    <span class="emoji-bounce" style="animation-delay: 0.1s">🥳</span>
+                    <span class="emoji-bounce" style="animation-delay: 0.2s">🎂</span>
+                    <span class="emoji-bounce" style="animation-delay: 0.3s">🎈</span>
+                    <span class="emoji-bounce" style="animation-delay: 0.4s">🎊</span>
+                </p>
+            </div>
+            <div class="fireworks-container" id="fireworks"></div>
+        </div>
+        <div class="footer-bottom">
+            <p class="names-final">Elisa & María</p>
+            <p class="date-final">14 de Marzo 2026</p>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
