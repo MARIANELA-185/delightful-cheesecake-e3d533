@@ -1,4 +1,6 @@
 
+
+
 :root {
     /* Paleta Verde Esmeralda */
     --primary-light: #36BFB1;
@@ -1256,12 +1258,12 @@ body {
 
 .friday-event { border-left: 3px solid #59b6a2; }
 .saturday-main { 
-    border-left: 3px solid #36BFB1; 
+    border-left: 3px solid #02735E; 
     background: rgba(54, 191, 177, 0.1);
 }
 .saturday-tardeo { border-left: 3px solid #038C73; }
 .saturday-fallas { border-left: 3px solid #02735E; }
-.sunday-event { border-left: 3px solid #e74c3c; }
+.sunday-event { border-left: 3px solid #a2c2b5; }
 
 .event-badge {
     display: inline-block;
@@ -1957,7 +1959,7 @@ body {
 
         .cookie-btn-outline {
             background: transparent;
-            color: #2af377;
+            color: #0addaf;
             border: 1.5px solid #00a171;
         }
 
@@ -2137,7 +2139,7 @@ body {
             position: fixed;
             top: 20px;
             right: 20px;
-            background: #48bb78;
+            background: #17a793;
             color: white;
             padding: 12px 20px;
             border-radius: 6px;
@@ -2170,6 +2172,4 @@ body {
            filter: blur(2px);
            pointer-events: none;
         }
-        
-        
 
